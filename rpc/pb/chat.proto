@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package agrim.io;
+
+service ChatService {
+  rpc SendMessage(messages) returns (ConfirmationResponse) {}
+  rpc GetMessages(GetMessagesRequest) returns (GetMessagesResponse) {}
+}
+
+message ConfirmationResponse {
+  bool sent = 1;
+}
+
+message GetMessagesRequest {
+  string reciever = 1;
+}
+
+message GetMessagesResponse {
+  repeated messages msg = 1;
+}
+
+message messages {
+  string sender = 1;
+  string message = 2;
+  string reciever = 3;
+}
